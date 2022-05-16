@@ -7,6 +7,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = os.urandom(32)
     SECRET_KEY = 'wepukhulu'
+    UPLOADED_PHOTOS_DEST = 'app/static/photos'
 
 
 class ProdConfig(Config):
