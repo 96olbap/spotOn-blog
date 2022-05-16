@@ -5,6 +5,7 @@ from . import auth
 from ..models import User
 from .forms import LoginForm,RegistrationForm
 from .. import db
+from ..email import mail_message
 
 # Registration view function
 @auth.route('/register',methods = ['GET', 'POST'])
@@ -19,6 +20,8 @@ def register():
         db.session.commit()
 
         flash(f'New account setup for {form.username.data}')
+
+        mail_message('Welcome to SpotOnBlog', 'email/welcome_user', user.email, user = user)
 
         return redirect(url_for('auth.login'))
     title = 'New Account'
