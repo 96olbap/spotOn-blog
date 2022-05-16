@@ -1,0 +1,5 @@
+{% extends 'base.html'%} {% import 'bootstrap/wtf.html' as wtf%} {% block styles %} {{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/404.css')}}"> {% endblock %} {% block content %}
+<h1 class="error_message">404: page cannot be found</h1>
+
+{% endblock %}

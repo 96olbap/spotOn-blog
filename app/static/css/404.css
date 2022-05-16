@@ -1,0 +1,19 @@
+body {
+    background: rgb(31, 8, 8);
+}
+
+.error_message {
+    font-size: 10rem;
+    color: #260C1A;
+    animation: header 1s ease-in-out infinite alternate;
+    text-align: center;
+}
+
+@keyframes header {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #863168, 0 0 40px #863168, 0 0 50px #863168, 0 0 60px #863168, 0 0 70px #863168;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #FF4DA6, 0 0 40px #FF4DA6, 0 0 50px #FF4DA6, 0 0 60px #FF4DA6, 0 0 70px #FF4DA6, 0 0 80px #FF4DA6;
+    }
+}
