@@ -1,7 +1,7 @@
 from flask import render_template,redirect,request,url_for,abort
-from ..models import User
+from ..models import User,Blog_post
 from . import main
-from .forms import UpdateProfile
+from .forms import UpdateProfile,PostBlog
 from .. import db,photos
 from flask_login import login_required,current_user
 
@@ -11,8 +11,17 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
+    form = Blog_post()
 
-    return render_template('index.html')
+    blogs = Blog_post.query.all()
+
+    if form.validate_on_submit():
+        blog = Blog_post(content = form.content.data, author = form.author.data, category = form.category.data, user_id = current_user.id)
+        db.session.add(blog)
+        db.session.commit()
+
+
+    return render_template('index.html', form=form, blogs=blogs)
 
 @main.route('/user/<uname>')
 def profile(uname):
