@@ -25,7 +25,7 @@ def register():
     return render_template('auth/register.html', registration_form = form, title=title)
 
 
-@auth.route('/login')
+@auth.route('/login', methods=['GET', 'POST'])
 def login():
     '''
     login view function to login a registered user
