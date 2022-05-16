@@ -8,20 +8,12 @@
             <h1 class="user__title">SpotOnBlog</h1>
         </header>
 
-        <form class="form">
+        <form class="form" method="POST">
             <div class="form__group">
-                <input type="text" placeholder="Username" class="form__input" />
+                <div class="form__input">
+                    {{wtf.quick_form(registration_form)}}
+                </div>
             </div>
-
-            <div class="form__group">
-                <input type="email" placeholder="Email" class="form__input" />
-            </div>
-
-            <div class="form__group">
-                <input type="password" placeholder="Password" class="form__input" />
-            </div>
-
-            <button class="btn" type="button">Register</button>
         </form>
     </div>
 

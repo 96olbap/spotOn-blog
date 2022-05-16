@@ -58,8 +58,8 @@ body {
     transition: 0.3s;
 }
 
-.form__input:focus {
-    background: darken(#fff, 3%);
+.form__input:hover {
+    background: darken(rgb(144, 142, 142), 5%);
 }
 
 .btn {
@@ -71,12 +71,13 @@ body {
     outline: 0;
     border: 0;
     color: white;
-    background: color-primary;
+    background: #291F1D;
     transition: 0.3s;
 }
 
 .btn:hover {
-    background: darken(color-primary, 5%);
+    background: #140f0e;
+    color: rgb(144, 142, 142);
 }
 
 @keyframes NO {
@@ -123,4 +124,14 @@ body {
     100% {
         background-position: 0 0
     }
+}
+
+.forgot {
+    text-decoration: none;
+    color: white;
+    float: right;
+}
+
+.forgot:hover {
+    color: black;
 }
