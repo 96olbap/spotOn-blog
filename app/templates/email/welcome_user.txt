@@ -1,0 +1,7 @@
+Hello {{user.username}}
+Hi there!
+
+Welcome to SpotOnBlog
+We're so glad you're here. You are now part of a growing community of creatives collaborating, and connecting across the globe via browsing/posting to our collection of blogs.
+Whether you’ve joined to post a blog of your own or just to explore blogss by other users, we’ve got something for you.
+Let’s go!
