@@ -11,7 +11,7 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    form = Blog_post()
+    form = PostBlog()
 
     blogs = Blog_post.query.all()
 

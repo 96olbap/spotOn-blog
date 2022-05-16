@@ -1,5 +1,54 @@
-{% extends 'base.html' %} {% import 'bootstrap/wtf.html' as wtf %} {% block content %}
+{% extends 'base.html' %} {% import 'bootstrap/wtf.html' as wtf %} {% block styles %} {{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}"> {% endblock %} {% block content %}
 
-<h1>Ola Amigo!🥸</h1>
+<div class="container container-fluid">
+
+    <section class="user">
+        <header class="user__header">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt="" />
+            <h1 class="user__title">Recent Posts</h1>
+        </header>
+
+        <ul class="form">
+            {% for blog in blogs %}
+            <li>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ blog.category }}</h5>
+                        <p class="card-text">
+                            {{ blog.content }}
+                        </p>
+                        <p class="card-text"><small class="text-muted">Posted at: {{blog.created_at.strftime('%d-%m-%Y')}}</p>
+                        <p class="card-text"><small class="text-muted"><a href="#">Author: {{blog.author}}</a></p>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        {% if current_user.is_authenticated %}
+        <center>
+            <hr>
+        </center>
+        {% else %}
+        <p class="publish"> Post a blog? <a href="{{url_for('auth.login')}}">Login</a></p>
+        {% endif %}
+    </section>
+    <br> 
+    {% if current_user.is_authenticated %}
+    <section class='user'>
+        <header class="user__header">
+            <h1 class="user__title">Write a blog</h1>
+        </header>
+        <form class="form">
+            <div class="form__group">
+                <div class="form__input">
+                    {{wtf.quick_form(form)}}
+                </div>
+            </div>
+        </form>
+    </section>
+    {% endif %}
+</div>
 
 {% endblock %}
