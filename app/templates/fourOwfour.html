@@ -1,5 +1,22 @@
 {% extends 'base.html'%} {% import 'bootstrap/wtf.html' as wtf%} {% block styles %} {{ super() }}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/404.css')}}"> {% endblock %} {% block content %}
-<h1 class="error_message">404: page cannot be found</h1>
+<div class="container container-fluid">
+    <div class="error_page">
+        <header class="user__header">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt="" />
+            <h1 class="user__title">SpotOnBlog</h1>
+        </header>
+        <section>
+            <div class="error_message">
+                <h1>404: page cannot be found</h1>
+            </div>
+            <center>
+                <div class="home_link">
+                    <p>Go back to Home page <a href="/">Home</a></p>
+                </div>
+            </center>
+        </section>
+    </div>
+</div>
 
 {% endblock %}

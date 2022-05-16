@@ -3,10 +3,24 @@ body {
 }
 
 .error_message {
-    font-size: 10rem;
     color: #260C1A;
-    animation: header 1s ease-in-out infinite alternate;
+    animation: header 2.4s ease-in-out infinite alternate;
     text-align: center;
+}
+
+.error_message h1 {
+    font-size: 15rem;
+}
+
+.home_link p {
+    color: whitesmoke;
+}
+
+.home_link a {
+    border: 2px solid whitesmoke;
+    margin: 3px;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 @keyframes header {
