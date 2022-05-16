@@ -1,8 +1,17 @@
 from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from datetime import datetime
+from flask_login import UserMixin
+from . import login_manager
 
-class User(db.Model):
+@login_manager.user_loader
+def load_user(user_id):
+    '''
+    load_user function to retrieve a user when a unique identifier is passed
+    '''
+    return User.query.get(int(user_id))
+
+class User(UserMixin, db.Model):
     '''
     User class that will define user objects
     '''
