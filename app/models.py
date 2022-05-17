@@ -23,6 +23,7 @@ class User(UserMixin, db.Model):
     profile_pic_path = db.Column(db.String())
     pass_secure = db.Column(db.String(255))
     post = db.relationship('Blog_post', backref = 'posts', lazy = 'dynamic')
+    comment = db.relationship('Comment', backref = 'user', lazy = 'dynamic')
 
     @property
     def password(self):
@@ -50,12 +51,12 @@ class Blog_post(db.Model):
     category = db.Column(db.String(), nullable = False)
     like = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    comment = db.relationship('Comments', backref = 'comments', lazy = 'dynamic')
+    comment = db.relationship('Comment', backref = 'comments', lazy = 'dynamic')
 
     def __repr__(self):
         return f'Blog_post { self.content }'
 
-class Comments(db.Model):
+class Comment(db.Model):
     '''
     Comments class to define coment objects
     '''
@@ -65,6 +66,15 @@ class Comments(db.Model):
     posted_at = db.Column(db.DateTime, nullable = False, default=datetime.utcnow)
     blog_post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+        @classmethod
+        def get_comments(cls,id):
+            comments = Comment.query.filter_by(blog_post_id=id).all()
+            return comments
 
     def __repr__(self):
         return f'User {self.content}'

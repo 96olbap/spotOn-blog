@@ -79,8 +79,7 @@ body {
     transition: 0.3s;
 }
 
-
-/* .btn {
+.btn {
     display: block;
     width: 100%;
     padding: 20px;
@@ -96,7 +95,7 @@ body {
 .btn:hover {
     background: #140f0e;
     color: rgb(144, 142, 142);
-} */
+}
 
 @keyframes NO {
     from,
@@ -168,4 +167,10 @@ h1 {
 
 .card a:hover {
     text-decoration: initial;
+}
+
+#main-v {
+    position: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
