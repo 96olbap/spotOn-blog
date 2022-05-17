@@ -13,9 +13,35 @@ body {
     height: 100vh
 }
 
+.blogs {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    row-gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-self: center;
+    width: 100%;
+}
+
+.blog-item {
+    width: 40%;
+    height: 50%;
+    padding: 1.5rem;
+    margin: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    background-color: white;
+    border-radius: 0.8rem;
+    transition: 200ms ease;
+    box-shadow: 7px -7px 4px grey;
+}
+
 .user {
     width: 90%;
-    max-width: 640px;
+    max-width: 540px;
     margin: 8vh auto;
 }
 
@@ -42,12 +68,6 @@ body {
     border: 3px solid black;
 }
 
-.form--no {
-    animation: NO 1s ease-in-out;
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-}
-
 .form__input {
     display: block;
     width: 100%;
@@ -59,11 +79,8 @@ body {
     transition: 0.3s;
 }
 
-.form__input:hover {
-    background: darken(rgb(144, 142, 142), 5%);
-}
 
-.btn {
+/* .btn {
     display: block;
     width: 100%;
     padding: 20px;
@@ -79,7 +96,7 @@ body {
 .btn:hover {
     background: #140f0e;
     color: rgb(144, 142, 142);
-}
+} */
 
 @keyframes NO {
     from,
@@ -138,9 +155,8 @@ h1 {
     border: none;
 }
 
-.text-muted i {
-    margin: 0 10px;
-}
+
+/*  */
 
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);

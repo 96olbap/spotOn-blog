@@ -13,6 +13,32 @@ body {
     height: 100vh
 }
 
+.blogs {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    row-gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    justify-self: center;
+    width: 80%;
+}
+
+.blog-item {
+    width: 30%;
+    height: 60%;
+    padding: 1.5rem;
+    margin: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    background-color: white;
+    border-radius: 0.8rem;
+    transition: 200ms ease;
+    box-shadow: 7px -7px 4px grey;
+}
+
 .user {
     width: 90%;
     max-width: 340px;
@@ -30,6 +56,13 @@ body {
     margin-bottom: -10px;
     font-weight: 500;
     color: white;
+}
+
+.form-blogs {
+    overflow: hidden;
+    opacity: 0;
+    transform: translate3d(0, 500px, 0);
+    animation: arrive 500ms ease-in-out 0.9s forwards;
 }
 
 .form {
