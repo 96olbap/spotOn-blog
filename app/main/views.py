@@ -1,8 +1,10 @@
+from unicodedata import category
 from flask import render_template,redirect,request,url_for,abort
+from sqlalchemy import desc
 from ..models import User,Blog_post
 from . import main
 from .forms import UpdateProfile,PostBlog
-from .. import db,photos
+from .. import photos,db
 from flask_login import login_required,current_user
 
 # Views
@@ -13,12 +15,15 @@ def index():
     '''
     form = PostBlog()
 
-    blogs = Blog_post.query.all()
+    blogs = Blog_post.query.order_by(desc(Blog_post.created_at))
 
-    if form.validate_on_submit():
-        blog = Blog_post(content = form.content.data, author = form.author.data, category = form.category.data, user_id = current_user.id)
-        db.session.add(blog)
-        db.session.commit()
+    if request.method == 'POST':
+
+        if form.validate_on_submit():
+            post = Blog_post(content = form.content.data, author = form.author.data, category = form.category.data, user_id = current_user.id)
+            db.session.add(post)
+            db.session.commit()
+            return redirect(url_for('.index')) 
 
 
     return render_template('index.html', form=form, blogs=blogs)

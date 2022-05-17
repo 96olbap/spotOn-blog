@@ -23,7 +23,6 @@ class User(UserMixin, db.Model):
     profile_pic_path = db.Column(db.String())
     pass_secure = db.Column(db.String(255))
     post = db.relationship('Blog_post', backref = 'posts', lazy = 'dynamic')
-    comment = db.relationship('Comments', backref = 'blog_comment', lazy = 'dynamic')
 
     @property
     def password(self):
@@ -45,7 +44,6 @@ class Blog_post(db.Model):
     '''
     __tablename__ = 'posts'
     id = db.Column(db.Integer,primary_key = True)
-    blog_pic_path = db.Column(db.String())
     content = db.Column(db.String(255), nullable = False)
     author = db.Column(db.String(80), nullable = False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -53,6 +51,9 @@ class Blog_post(db.Model):
     like = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comment = db.relationship('Comments', backref = 'comments', lazy = 'dynamic')
+
+    def __repr__(self):
+        return f'Blog_post { self.content }'
 
 class Comments(db.Model):
     '''
