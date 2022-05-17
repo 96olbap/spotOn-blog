@@ -19,7 +19,7 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        flash(f'New account setup for {form.username.data}')
+        flash(f'New account setup for {form.username.data}',category = 'success')
 
         mail_message('Welcome to SpotOnBlog', 'email/welcome_user', user.email, user = user)
 
