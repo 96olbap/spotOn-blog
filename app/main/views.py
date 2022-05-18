@@ -16,7 +16,7 @@ def index():
     '''
     form = PostBlog()
     quote = process_quote()
-    title = 'Inspirational Quote'
+    title = 'Home - SpotOnBlog'
 
     blogs = Blog_post.query.order_by(desc(Blog_post.created_at))
 

@@ -19,16 +19,16 @@ body {
     justify-content: center;
     gap: 1.5rem;
     row-gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(fit-content, 1fr));
     justify-self: center;
-    width: 100%;
+    width: fit-content;
 }
 
 .blog-item {
     width: 40%;
     height: 50%;
-    padding: 1.5rem;
-    margin: 3px;
+    padding: 0.5rem;
+    /* margin: 0.5px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -173,4 +173,55 @@ h1 {
     position: fixed;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+
+.quote-wrapper {
+    display: block;
+    width: fit-content;
+    padding: 5px;
+    font-family: nunito;
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    transition: 0.3s;
+    border: 2px solid black;
+    border-radius: 6px;
+}
+
+.quote-btn {
+    display: block;
+    width: 40%;
+    padding: 20px;
+    font-family: nunito;
+    -webkit-appearance: none;
+    outline: 0;
+    border: 0;
+    border-radius: 6px;
+    color: white;
+    background: #291F1D;
+    transition: 0.3s;
+}
+
+.quote-btn:hover {
+    background: #140f0e;
+    color: rgb(144, 142, 142);
+    text-decoration: none;
+}
+
+.publish {
+    font-size: 2rem;
+}
+
+.publish a {
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 6px;
+    color: rgba(0, 0, 0, 0.4);
+    transition: 0.6s;
+}
+
+.publish a:hover {
+    background: #140f0e;
+    color: rgb(144, 142, 142);
+    text-decoration: none;
 }
