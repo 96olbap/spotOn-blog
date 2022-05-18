@@ -3,7 +3,7 @@ class Config:
     '''
     General configuration parent class
     '''
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://apple:pass123@localhost/blogpost'
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://apple:pass123@localhost/postblog'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = os.urandom(32)
     SECRET_KEY = 'wepukhulu'
