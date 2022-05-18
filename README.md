@@ -37,6 +37,7 @@ SpotOnBlog is a personal blogging site that enables users to create and share th
 * * [x] Flask
 * [x] JavaScript
 * [x] HTML,CSS
+* [x] PostgreSQL
 * [x] Heroku
 
 ---
