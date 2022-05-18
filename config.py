@@ -8,7 +8,6 @@ class Config:
     SECRET_KEY = os.urandom(32)
     SECRET_KEY = 'wepukhulu'
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
-    # QUOTE_API_BASE_URL = 'http://quotes.stormconsultancy.co.uk/random.json'
 
     #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
