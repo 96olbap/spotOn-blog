@@ -17,3 +17,10 @@ class PostBlog(FlaskForm):
     author = TextAreaField('Name of author', validators = [InputRequired()])
     category = SelectField('Category', choices=(['', 'Food', 'Sports', 'Travel', 'Art', 'Music', 'Film', 'Lifestyle', 'Automobiles', 'Other']), validators = [InputRequired()])
     submit = SubmitField('Post')
+
+class PostComment(FlaskForm):
+    '''
+    PostComment class to create instances of comment obj
+    '''
+    content = TextAreaField('Write a comment', validators = [InputRequired()])
+    submit = SubmitField('Post')
