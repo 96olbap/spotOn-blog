@@ -33,6 +33,18 @@
         <p class="publish"> Post a blog? <a href="{{url_for('auth.login')}}">Login</a></p>
         {% endif %}
     </section>
+
+    <div class="quote-wrapper">
+        <div class="quote">
+            <h1 class="quote-title"> {{ title }} </h1>
+            <h1> {{quote.author}} </h1>
+            <h3>
+                <blockquote><cite> "{{quote.quote}}" </cite></blockquote>
+            </h3>
+            <a class="quote-btn" href="{{url_for('.index')}}">Generate New Quote</a>
+        </div>
+    </div>
+
     <br> {% if current_user.is_authenticated %}
     <section class='user'>
         <header class="user__header">

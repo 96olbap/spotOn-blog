@@ -6,6 +6,7 @@ from . import main
 from .forms import UpdateProfile,PostBlog
 from .. import photos,db
 from flask_login import login_required,current_user
+from ..requests import process_quote
 
 # Views
 @main.route('/', methods = ['GET','POST'])
@@ -14,6 +15,8 @@ def index():
     View root page function that returns the index page and its data
     '''
     form = PostBlog()
+    quote = process_quote()
+    title = 'Inspirational Quote'
 
     blogs = Blog_post.query.order_by(desc(Blog_post.created_at))
 
@@ -26,7 +29,7 @@ def index():
             return redirect(url_for('.index')) 
 
 
-    return render_template('index.html', form=form, blogs=blogs)
+    return render_template('index.html', form=form, blogs=blogs, quote=quote, title = title)
 
 @main.route('/user/<uname>')
 def profile(uname):
