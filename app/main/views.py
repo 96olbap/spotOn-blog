@@ -3,7 +3,7 @@ from flask import render_template,redirect,request,url_for,abort
 from sqlalchemy import desc
 from ..models import User,Blog_post,Comment
 from . import main
-from .forms import UpdateProfile,PostBlog
+from .forms import UpdateProfile,PostBlog,PostComment
 from .. import photos,db
 from flask_login import login_required,current_user
 from ..requests import process_quote
@@ -71,4 +71,21 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
 
-# @main.route('/comments/<int>')
+@main.route('/comment/<post_id>', methods=['GET', 'POST'])
+@login_required
+def make_comment(post_id):
+    post = Blog_post.query.filter_by(blog_post_id = post_id).first()
+    if post is None:
+        abort(404)
+
+    form = PostComment()
+
+    if form.validate_on_submit():
+        post.content = form.content.data
+
+        db.session.add(post)
+        db.session.commit()
+
+        return redirect(url_for('.index'))
+
+    return render_template('comment/comment.html', form = form)
