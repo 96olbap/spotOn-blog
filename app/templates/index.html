@@ -19,7 +19,8 @@
                         {{ blog.content }}
                     </p>
                     <p class="card-text">Posted at: {{blog.created_at.strftime('%d-%m-%Y')}}</p>
-                    <p class="card-text"><a href="#">Author: {{blog.author}}</a></p>
+                    <p class="card-text"><a>Author: {{blog.author}}</a></p>
+                    <p class='add-comment-link card-text' href="#">Add Comment</p>
                 </div>
             </div>
             {% endfor %}

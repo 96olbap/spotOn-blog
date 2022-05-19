@@ -225,3 +225,7 @@ h1 {
     color: rgb(144, 142, 142);
     text-decoration: none;
 }
+
+.add-comment-link {
+    font-size: 30rem;
+}
