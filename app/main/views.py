@@ -71,21 +71,26 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
 
-@main.route('/comment/<post_id>', methods=['GET', 'POST'])
+@main.route('/comment/<int:blog_id>', methods=['GET', 'POST'])
 @login_required
-def make_comment(post_id):
-    post = Blog_post.query.filter_by(blog_post_id = post_id).first()
-    if post is None:
+def make_comment(blog_id):
+
+    blog = Blog_post.query.filter_by(id = blog_id).first()
+    comments = Comment.query.filter_by(blog_post_id = blog_id)
+
+    if blog is None:
         abort(404)
+
 
     form = PostComment()
 
     if form.validate_on_submit():
-        post.content = form.content.data
+        added_comment = Comment(content = form.content.data, blog_post_id = blog_id, user_id = current_user.id)
 
-        db.session.add(post)
+        db.session.add(added_comment)
         db.session.commit()
 
-        return redirect(url_for('.index'))
+        return redirect(url_for('.make_comment', blog_id = blog_id))
+    title = 'SpotOnBlog | Comments'
 
-    return render_template('comment/comment.html', form = form)
+    return render_template('comment/comment.html', form = form, blog = blog, comments = comments, title = title)
